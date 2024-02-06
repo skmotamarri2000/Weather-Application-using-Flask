@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/output.css') }}">
+    <style>
+        body {
+            
+            background-image: url("{{ url_for('static', filename='images/weather_bg.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-black-200 text-white p-4 w-full">
+        <div class="flex justify-end">
+          <a href="/home" class="text-white hover:underline">Home</a>
+        </div>
+    </nav>
+    <div class="flex-grow text-center my-8">
+        <h1 class="text-4xl font-bold mb-4">Current Weather in {{ weather.city }}</h1>
+        <p class="text-xl">Temperature: {{ weather.temperature_celsius }} °C</p>
+        <p class="text-xl mb-4">Description: {{ weather.description }}</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+</html>

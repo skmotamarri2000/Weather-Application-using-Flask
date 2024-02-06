@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/weather_bg.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-100">
+
+    <div class="w-full max-w-sm p-4 bg-transparent border border-transparent rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto mt-8">
+        <h1 class="text-3xl font-bold text-center">Present Weather in</h1>
+        <br>
+        <!--<h3 class="text-xl mt-4">Location Details:</h3>-->
+        <strong>
+            <p class="text-lg text-center">
+                {{ current_weather.city }}, {{ current_weather.state }}, {{ current_weather.country }}
+            </p>
+        </strong>
+        <br>
+        <p class="text-lg text-center">
+            <strong>Temperature:</strong> <b>{{ current_weather.temperature_celsius }} °C</b>
+        </p>
+        <p class="text-lg text-center">
+            <strong>Description: {{ current_weather.description }}</strong>
+        </p>
+    </div>
+    
+    
+    <br>
+    <div class="container mx-auto my-8">
+        
+        <form method="post" action="/home" class="max-w-md mx-auto">
+            {{ form.csrf_token }}
+            
+            <div class="mb-4">
+                <label for="city_name" class="block text-black-700 text-xl font-bold mb-2"><strong>City</strong></label>
+
+                {{ form.city_name(class="w-full px-3 py-2 border rounded-md") }}
+            </div>
+            
+            <div class="mb-4">
+                <label for="state_name" class="block text-black-700 text-xl font-bold mb-2"><strong>State</strong></label>
+                {{ form.state_name(class="w-full px-3 py-2 border rounded-md") }}
+            </div>
+            
+            <div class="mb-4">
+                <label for="country_name" class="block text-black-700 text-xl font-bold mb-2"><strong>Country</strong></label>
+                {{ form.country_name(class="w-full px-3 py-2 border rounded-md") }}
+            </div>
+            
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md">Get Weather</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+</html>
+
