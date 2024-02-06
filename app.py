@@ -9,7 +9,7 @@ from urllib.request import urlopen
 import re as r
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '5791628bb0b13he0c578dfde280ba245'
+app.config['SECRET_KEY'] = '5791628bb0b13he0078dfde280ba245'
 
 
 class WeatherForm(FlaskForm):
@@ -81,7 +81,7 @@ def finding_coordinates(city, state, country):
 
 
 def weather_finder(city, state, country):
-    api_key = '12f1f965e3ae56e0fee7b8c8d9c0cc1d'
+    api_key = 'weather_api_key' # Replace with weather api
     latitude, longitude = finding_coordinates(city, state, country)
 
     if latitude is None or longitude is None:
@@ -109,7 +109,7 @@ def weather_finder(city, state, country):
 
 
 def get_default_weather(city, state, country):
-    api_key = '12f1f965e3ae56e0fee7b8c8d9c0cc1d'
+    api_key = 'weather_api_key' # Replace with weather api
     latitude, longitude = finding_coordinates(city, state, country)
 
     if latitude is None or longitude is None:
